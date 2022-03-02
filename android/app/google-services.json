@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "885097354184",
+    "project_id": "androidcashingminers",
+    "storage_bucket": "androidcashingminers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885097354184:android:8677b45503fcae91d426fd",
+        "android_client_info": {
+          "package_name": "com.cashingminers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885097354184-557optsn0ck05ip9siq55ea3og62bd79.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSWLF_vQq_oxXrfx4nUdiQOP0mTrZ3pSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885097354184-557optsn0ck05ip9siq55ea3og62bd79.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

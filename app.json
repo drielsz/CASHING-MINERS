@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "CASHING-MINERS",
+    "slug": "CASHING-MINERS",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "CASHING-MINERS",
+  "android": {
+    "config": {
+      "googleMobileAdsAppId": "ca-app-pub-2435341491236531~8112238826" 
+    }
+  },
+  "ios": {
+    "config": {
+      "googleMobileAdsAppId": "ca-app-pub-2435341491236531~8112238826" 
+    }}
+}
