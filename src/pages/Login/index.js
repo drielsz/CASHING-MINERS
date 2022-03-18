@@ -1,5 +1,5 @@
 import React, {} from 'react'
-import {Dimensions, Button} from 'react-native'
+import {Dimensions, Button, TouchableOpacity} from 'react-native'
 // Estilos
 import { SafeAreaView, View, Image, Text, ViewLine, TextInput, TextSenha} from '../../styles'
 // Complementing the dimensions, I'm taking the width and height of the user's cell phone and multiplying by fractions to make the responsiveness.
@@ -27,8 +27,11 @@ const Login = ({navigation}) => {
                 <TextInput first onChangeText={text => setUser(text)}/>
                 <TextSenha right={height * 0.15} distanceLogin transform color>senha{"\n"}<ViewLine/></TextSenha>
                 <TextInput second onChangeText={text => setPassword(text)}/>
-                <Button title='Enviar' onPress={handleSignIn}>
+                <Button title='Enviar' onPress={() => signIn()}>
                 </Button>
+                    <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+                        <Text color transform normal distanceCashing>Não possui conta? aqui</Text>  
+                    </TouchableOpacity>
             </View>
         </SafeAreaView>
     )

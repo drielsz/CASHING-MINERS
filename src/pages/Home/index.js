@@ -19,9 +19,9 @@ import {Banner} from '../../components/Ad/Banner'
 // Async Storage (COUNT)
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import Withdraw from '../Withdraw'
+import {useAuth} from '../../contexts/auth'
 const Home = ({}) => {
-
+    const {quantCHM, setQuantCHM} = useAuth()
     const [ count, setCount ] = useState(0) 
     const [ restante, setRestante ] = useState(50)
     const [ price, setPrice ] = useState(1000)
@@ -131,16 +131,15 @@ const Home = ({}) => {
     }
 
     async function saveData () {
-        await AsyncStorage.setItem("@DZ_8D", JSON.stringify(count +1))
+        await AsyncStorage.setItem("@DZ_8D", JSON.stringify(quantCHM +1))
     }
 
 
     async function showData() {
         const json = await AsyncStorage.getItem("@DZ_8D")
         const valorcount = JSON.parse(json)
-        Alert.alert(`Valor: ${valorcount.count}`)    
     }
-    console.log(showData())
+
     return(
         <SafeAreaView align>
             <View style={{ bottom: height * 0.06, alignItems: 'center' }}>
@@ -151,7 +150,8 @@ const Home = ({}) => {
 
                     </SupportToInventory>
                     <SupportToInventory>
-                        <Text transform color>{count}<Text transform ouro> chm</Text></Text>
+                        {/* VALOR DE QUANTO CHM O USUARIO TEM */}
+                        <Text transform color>{quantCHM}<Text transform ouro> chm</Text></Text>
                     </SupportToInventory>
                 </Header>
                 <View style={{ alignItems: 'center', justifyContent: 'center', top: height * 0.1 }}>
@@ -160,7 +160,7 @@ const Home = ({}) => {
                 </View>
 
                 {/* Picareta */}
-                <TouchableOpacity onPress={() => setCount(count + 1, setRestante(restante - 1), showData())} style={styles.viewPicareta}>
+                <TouchableOpacity onPress={() => setQuantCHM(quantCHM + 1, setRestante(restante - 1), showData())} style={styles.viewPicareta}>
                     {renderPicareta()}
                 </TouchableOpacity>
 
@@ -168,7 +168,7 @@ const Home = ({}) => {
 
                 <Header style={{ top: height * 0.04 }} width={width / 1.05}>
                     <SupportToInventory style={{ top: height * 0.2 }} width={height * 0.23} height={height * 0.11}>
-                        {count < price ?
+                        {quantCHM < price ?
                             <TouchableOpacity disabled={true}>
                                 <Text transform>evoluir picareta
                                     <Text transform>{"\n"}{price}
@@ -184,7 +184,7 @@ const Home = ({}) => {
                     </SupportToInventory>
 
                     <SupportToInventory width={height * 0.23} height={height * 0.11} style={{ top: height * 0.2 }}>
-                        {count < enchamentPrice ?
+                        {quantCHM < enchamentPrice ?
                             <TouchableOpacity disabled={true}>
                                 <Text transform>encantar<Text>{"\n"}preço: {enchamentPrice}<Text transform> chm</Text></Text></Text>
                             </TouchableOpacity>
@@ -215,12 +215,12 @@ const Home = ({}) => {
             </View>
             <ModalComponent
                 display={modalVisible} undisplay={setModalVisible}
-                count1={count} price1={price} setFunction={setCount} nivel={nivel}
+                count1={quantCHM} price1={price} setFunction={setCount} nivel={nivel}
                 setNivel={setNivel} />
             <ModalPicareta
                 setModalPicareta={setModalPicareta}
                 modalPicareta={modalPicareta}
-                count={count} price={price} setFunction={setCount}
+                count={quantCHM} price={price} setFunction={setCount}
                 setNivelPicareta={setNivelPicareta} nivelPicareta={nivelPicareta} />
             <View style={{ position: 'absolute', bottom: 0 }}>
                 <Banner />

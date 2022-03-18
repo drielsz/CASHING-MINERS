@@ -1,6 +1,6 @@
 import React, {createContext, useState, useEffect, useContext} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import api from '../services/api'
+import {api} from '../services/api'
 import * as auth from '../services/auth'
 
 interface User {
@@ -9,6 +9,8 @@ interface User {
 }
 
 interface AuthContextData {
+    setQuantCHM: any;
+    quantCHM: any;
     signed: boolean;
     user: User | null;
     loading: boolean;
@@ -21,7 +23,8 @@ const AuthContext = createContext<AuthContextData >({} as AuthContextData)
 // JWT (Stateless, não precisam guardar nenhuma informação lá no back end)
 export const AuthProvider: React.FC = ({children}) => {
     const [ user, setUser ] = useState<User | null>(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
+    const [quantCHM, setQuantCHM] = useState(0)
     // Verificação para saber se o usuario está logado ou não.
     useEffect(() => {
         async function loadStoragedData() {
@@ -53,7 +56,7 @@ export const AuthProvider: React.FC = ({children}) => {
     }
 
     return(
-    <AuthContext.Provider value={{signed: !!user, user, signIn, loading, signOut}}>
+    <AuthContext.Provider value={{signed: !!user, user, signIn, loading, signOut, quantCHM, setQuantCHM}}>
         {children}
     </AuthContext.Provider>
     )

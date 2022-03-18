@@ -15,10 +15,11 @@ import {Banner} from '../../components/Ad/Banner';
 // Async Storage (COUNT)
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Payment, PaymentPaypal} from '../../components/PaymentBackground';
+
 const Withdraw: React.FC = ({}) => {
    const [value, setValue] = useState(0)
 
-   const {user, signOut} = useAuth();
+   const {user, signOut, quantCHM} = useAuth();
    function handleSignOut () {
        signOut()
    }
@@ -37,7 +38,7 @@ const Withdraw: React.FC = ({}) => {
                 <SupportToInventory bg height={height * 0.08} width={width * 0.4}>
                     <Text transform color >saldo atual</Text>
                     <View style={{flexDirection:'row'}}>
-                        <Text fontfamily color>{}</Text>
+                        <Text fontfamily color>{quantCHM}</Text>
                         <Text ouro transform> CHM</Text>
                     </View>
                 </SupportToInventory>
